@@ -2,7 +2,6 @@
 
 namespace App\Services;
 
-use Exeception;
 use App\Exceptions\NotEnoughCharactersExeception;
 use App\Exceptions\NotEnoughBigLettersException;
 use App\Exceptions\NotEnoughSmallLettersException;
@@ -12,9 +11,11 @@ use App\Exceptions\NotEnoughNonAlphabeticCharactersLettersException;
 use App\Exceptions\NotEnoughNumbersException;
 use Illuminate\Http\Request;
 
-class PasswordValidation {
+class PasswordValidation
+{
 
-  public function check(Request $request){
+  public function check(Request $request)
+  {
 
     $password = $request->password;
     $countOfCharacters = '/.{8,}/';
@@ -32,5 +33,6 @@ class PasswordValidation {
     throw_unless(preg_match($сyrillicLetter, $password), new NotEnoughCyrillicLettersException);
     throw_unless(preg_match($nonAlphabeticCharacters, $password), new NotEnoughNonAlphabeticCharactersLettersException);
     throw_unless(preg_match($numbers, $password), new NotEnoughNumbersException);
+
   }
 }

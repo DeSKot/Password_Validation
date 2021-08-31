@@ -18,5 +18,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::post('/check_password', [
-    CheckPasswordController::class , 'check'
-])->name('check_password');
+    CheckPasswordController::class, 'check'
+]);
