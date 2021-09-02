@@ -3,9 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Http\Controllers\CheckPasswordController;
-use App\Interfaces\PasswordValidationInterface;
-use App\Services\PasswordValidation;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -28,8 +26,4 @@ class AppServiceProvider extends ServiceProvider
     {
         //
     }
-
-    public $singletons = [
-        PasswordValidationInterface::class => PasswordValidation::class,
-    ];
 }
