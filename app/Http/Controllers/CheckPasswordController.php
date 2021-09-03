@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 
-use Illuminate\Http\Request;
 use App\Interfaces\PasswordValidationInterface;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 
 class CheckPasswordController extends Controller
 {
@@ -17,10 +18,10 @@ class CheckPasswordController extends Controller
     $this->password = $passwordInterface;
   }
 
-  public function check(): mixed
+  public function check(Request $request): RedirectResponse
   {
     try {
-      $this->password->check();
+      $this->password->check($request->input('password', ''));
     } catch (\Throwable $th) {
       return redirect()->back()->with('error', $th->getMessage());
     }

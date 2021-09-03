@@ -1,19 +1,16 @@
 <?php
 
 namespace App\Interfaces;
-
-use Illuminate\Http\Request;
-
 interface PasswordValidationInterface
 {
 
-  public const countOfCharacters = '/.{8,}/';
-  public const bigLetter = '/[А-ЯЁA-Z]/u';
-  public const smallLetter = '/[а-яёa-z]/u';
-  public const latinLetter = '/[A-Z]/i';
-  public const cyrillicLetter = '/[А-ЯЁ]/ui';
-  public const nonAlphabeticCharacters = '/([!|"|№|;|%|:|?|*|(|)|_|+|~|\']){3,}/u';
-  public const numbers = '/\\d/u';
+  public const COUNT_OF_CHARACTERS = '/.{8,}/';
+  public const BIG_LETTER = '/[А-ЯЁA-Z]/u';
+  public const SMALL_LETTER = '/[а-яёa-z]/u';
+  public const LATIN_LETTER = '/[A-Z]/i';
+  public const CYRILLIC_LETTER = '/[А-ЯЁ]/ui';
+  public const NON_ALPHABETIC_CHARACTERS = '/([!|"|№|;|%|:|?|*|(|)|_|+|~|\']){3,}/u';// 
+  public const NUMBERS = '/\\d/u';
 
-  public function check();
+  public function check(string $password): void;
 }
